@@ -1,0 +1,10 @@
+true,predicted,n_models_affected,median_n_px,min_n_px,max_n_px,pct_of_class_median
+Forest/Vegetation,Plantation,6,89.0,47,89,9.18
+Swamp,Water,5,15.0,0,25,12.93
+Built-up,Swamp,6,4.0,3,9,0.91
+Swamp,Built-up,5,4.0,0,23,3.45
+Water,Forest/Vegetation,3,0.5,0,1,0.33
+Water,Built-up,2,0.0,0,1,0.0
+Built-up,Water,1,0.0,0,2,0.0
+Built-up,Plantation,2,0.0,0,13,0.0
+Plantation,Forest/Vegetation,1,0.0,0,2,0.0

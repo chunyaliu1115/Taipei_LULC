@@ -1,0 +1,31 @@
+class_id,class,model,n_val_px,n_val_polygons,n_errors,n_polygons_with_errors,worst_polygon,share_in_worst_polygon,dominant_confusion
+1,Water,CART,153,3,1,1,8,1.0,Built-up
+1,Water,SVM (RBF),153,3,0,0,,0.0,
+1,Water,Random Forest,153,3,2,2,1,0.5,Forest/Vegetation
+1,Water,XGBoost,153,3,1,1,1,1.0,Forest/Vegetation
+1,Water,LightGBM,153,3,0,0,,0.0,
+1,Water,MLP (deep),153,3,1,1,1,1.0,Forest/Vegetation
+2,Built-up,CART,440,7,22,4,16,0.318,Plantation
+2,Built-up,SVM (RBF),440,7,6,3,13,0.667,Swamp
+2,Built-up,Random Forest,440,7,9,2,16,0.889,Swamp
+2,Built-up,XGBoost,440,7,4,1,16,1.0,Swamp
+2,Built-up,LightGBM,440,7,4,1,16,1.0,Swamp
+2,Built-up,MLP (deep),440,7,4,1,16,1.0,Swamp
+3,Forest/Vegetation,CART,970,13,89,3,77,0.966,Plantation
+3,Forest/Vegetation,SVM (RBF),970,13,47,3,77,0.957,Plantation
+3,Forest/Vegetation,Random Forest,970,13,89,3,77,0.966,Plantation
+3,Forest/Vegetation,XGBoost,970,13,89,3,77,0.966,Plantation
+3,Forest/Vegetation,LightGBM,970,13,89,3,77,0.966,Plantation
+3,Forest/Vegetation,MLP (deep),970,13,87,3,77,0.966,Plantation
+4,Plantation,CART,150,5,0,0,,0.0,
+4,Plantation,SVM (RBF),150,5,2,1,95,1.0,Forest/Vegetation
+4,Plantation,Random Forest,150,5,0,0,,0.0,
+4,Plantation,XGBoost,150,5,0,0,,0.0,
+4,Plantation,LightGBM,150,5,0,0,,0.0,
+4,Plantation,MLP (deep),150,5,0,0,,0.0,
+5,Swamp,CART,116,2,22,2,90,0.773,Water
+5,Swamp,SVM (RBF),116,2,25,1,90,1.0,Water
+5,Swamp,Random Forest,116,2,18,2,90,0.944,Water
+5,Swamp,XGBoost,116,2,23,2,90,0.609,Built-up
+5,Swamp,LightGBM,116,2,15,2,88,0.533,Built-up
+5,Swamp,MLP (deep),116,2,16,2,90,0.812,Water

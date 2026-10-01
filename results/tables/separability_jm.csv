@@ -1,0 +1,11 @@
+class_a,name_a,class_b,name_b,bhattacharyya,jeffries_matusita,verdict
+2,Built-up,5,Swamp,2.579,1.8483,marginal
+1,Water,2,Built-up,4.9784,1.9862,separable
+1,Water,5,Swamp,5.077,1.9875,separable
+3,Forest/Vegetation,4,Plantation,5.1191,1.988,separable
+4,Plantation,5,Swamp,6.6247,1.9973,separable
+2,Built-up,3,Forest/Vegetation,10.5916,1.9999,separable
+1,Water,3,Forest/Vegetation,14.0913,2.0,separable
+1,Water,4,Plantation,36.9752,2.0,separable
+2,Built-up,4,Plantation,12.4662,2.0,separable
+3,Forest/Vegetation,5,Swamp,20.7052,2.0,separable

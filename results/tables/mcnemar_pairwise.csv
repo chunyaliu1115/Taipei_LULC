@@ -1,0 +1,16 @@
+model_A,model_B,OA_A,OA_B,delta_OA,n_A_wrong_B_right,n_A_right_B_wrong,statistic,p_naive,test,clustered_statistic,p_clustered,n_discordant_polygons,p_holm_naive,p_holm_clustered,significant_005
+CART,SVM (RBF),0.9267,0.9563,-0.0295,66,12,36.0128,1.96e-09,chi2 (corrected),1.5429,0.2142,10,2.94e-08,1,False
+CART,Random Forest,0.9267,0.9355,-0.0087,18,2,2.0,0.0004025,exact binomial,2.4615,0.1167,6,0.004025,1,False
+CART,XGBoost,0.9267,0.936,-0.0093,27,10,6.9189,0.008529,chi2 (corrected),2.312,0.1284,8,0.0597,1,False
+CART,LightGBM,0.9267,0.941,-0.0142,30,4,18.3824,1.807e-05,chi2 (corrected),3.25,0.07142,7,0.0002169,0.9999,False
+CART,MLP (deep),0.9267,0.941,-0.0142,27,1,22.3214,2.306e-06,chi2 (corrected),5.4516,0.01955,9,3.229e-05,0.2933,False
+SVM (RBF),Random Forest,0.9563,0.9355,0.0208,14,52,20.7424,5.254e-06,chi2 (corrected),0.7969,0.372,10,6.83e-05,1,False
+SVM (RBF),XGBoost,0.9563,0.936,0.0202,19,56,17.28,3.226e-05,chi2 (corrected),0.7149,0.3978,9,0.0003548,1,False
+SVM (RBF),LightGBM,0.9563,0.941,0.0153,26,54,9.1125,0.002539,chi2 (corrected),0.3733,0.5412,8,0.02031,1,False
+SVM (RBF),MLP (deep),0.9563,0.941,0.0153,20,48,10.7206,0.001059,chi2 (corrected),0.4596,0.4978,9,0.009535,1,False
+Random Forest,XGBoost,0.9355,0.936,-0.0005,14,13,0.0,1,chi2 (corrected),0.011,0.9165,5,1,1,False
+Random Forest,LightGBM,0.9355,0.941,-0.0055,18,8,3.1154,0.07756,chi2 (corrected),0.5952,0.4404,6,0.3102,1,False
+Random Forest,MLP (deep),0.9355,0.941,-0.0055,12,2,2.0,0.01294,exact binomial,2.381,0.1228,6,0.07031,1,False
+XGBoost,LightGBM,0.936,0.941,-0.0049,10,1,1.0,0.01172,exact binomial,1.5882,0.2076,3,0.07031,1,False
+XGBoost,MLP (deep),0.936,0.941,-0.0049,15,6,6.0,0.07835,exact binomial,1.9756,0.1599,3,0.3102,1,False
+LightGBM,MLP (deep),0.941,0.941,0.0,8,8,8.0,1,exact binomial,0.0,1,4,1,1,False

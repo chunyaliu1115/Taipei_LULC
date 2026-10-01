@@ -1,0 +1,90 @@
+digraph workflow {
+  graph [rankdir=TB, splines=polyline, nodesep=0.26, ranksep=0.40, fontname="Helvetica", bgcolor="white"];
+  node  [shape=box, style="filled,rounded", color="#7a7a7a", penwidth=0.7, fontname="Helvetica", fontsize=9, margin="0.07,0.05"];
+  edge  [color="#444444", penwidth=0.7, arrowsize=0.5, fontname="Helvetica", fontsize=7.5];
+  stage0 [label="Input", shape=box, style="filled", fillcolor="#dbe7f3", color="#dbe7f3", fontsize=8.5, fontcolor="#333333", width=0.95, height=0.30];
+  { rank=same; stage0;
+    s2 [label=<<TABLE BORDER="0" CELLPADDING="3"><TR><TD WIDTH="155"><B>Sentinel-2 MSI</B><BR/><FONT POINT-SIZE="7.0" COLOR="#333333">S2_HARMONIZED<BR/>2020-01-01 to 2020-12-31<BR/>cloud cover &lt; 20%</FONT></TD></TR></TABLE>>, fillcolor="#dbe7f3"];
+    roi [label=<<TABLE BORDER="0" CELLPADDING="3"><TR><TD WIDTH="155"><B>Training polygons</B><BR/><FONT POINT-SIZE="7.0" COLOR="#333333">110 single-part polygons<BR/>5 classes, field/visual labels<BR/>in the 'Id' property</FONT></TD></TR></TABLE>>, fillcolor="#dbe7f3"];
+    bnd [label=<<TABLE BORDER="0" CELLPADDING="3"><TR><TD WIDTH="155"><B>City boundary</B><BR/><FONT POINT-SIZE="7.0" COLOR="#333333">Taipei City administrative<BR/>polygon</FONT></TD></TR></TABLE>>, fillcolor="#dbe7f3"];
+    stage0 -> s2 [style=invis];
+    s2 -> roi [style=invis];
+    roi -> bnd [style=invis];
+  }
+  stage1 [label="Pre-processing", shape=box, style="filled", fillcolor="#e8eef5", color="#e8eef5", fontsize=8.5, fontcolor="#333333", width=0.95, height=0.30];
+  { rank=same; stage1;
+    comp [label=<<TABLE BORDER="0" CELLPADDING="3"><TR><TD WIDTH="155"><B>Median composite</B><BR/><FONT POINT-SIZE="7.0" COLOR="#333333">bands B2/B3/B4/B8<BR/>10 m, EPSG:32651<BR/>clipped to the boundary</FONT></TD></TR></TABLE>>, fillcolor="#e8eef5"];
+    parts [label=<<TABLE BORDER="0" CELLPADDING="3"><TR><TD WIDTH="155"><B>Explode to single parts</B><BR/><FONT POINT-SIZE="7.0" COLOR="#333333">MultiPolygon parts split so that<BR/>one polygon is one sampling cluster</FONT></TD></TR></TABLE>>, fillcolor="#e8eef5"];
+    stage1 -> comp [style=invis];
+    comp -> parts [style=invis];
+  }
+  stage2 [label="Sampling", shape=box, style="filled", fillcolor="#dff0e2", color="#dff0e2", fontsize=8.5, fontcolor="#333333", width=0.95, height=0.30];
+  { rank=same; stage2;
+    samp [label=<<TABLE BORDER="0" CELLPADDING="3"><TR><TD WIDTH="155"><B>sampleRegions</B><BR/><FONT POINT-SIZE="7.0" COLOR="#333333">on the native EPSG:32651 10 m grid<BR/>8493 labelled pixels</FONT></TD></TR></TABLE>>, fillcolor="#dff0e2"];
+    split [label=<<TABLE BORDER="0" CELLPADDING="3"><TR><TD WIDTH="250"><B>Polygon-level split</B><BR/><FONT POINT-SIZE="7.0" COLOR="#333333">train 80 polygons / 6664 px<BR/>val 30 polygons / 1829 px<BR/>stratified by class</FONT></TD></TR></TABLE>>, fillcolor="#dff0e2"];
+    stage2 -> samp [style=invis];
+    samp -> split [style=invis];
+  }
+  stage3 [label="Modelling", shape=box, style="filled", fillcolor="#f6ecd8", color="#f6ecd8", fontsize=8.5, fontcolor="#333333", width=0.95, height=0.30];
+  { rank=same; stage3;
+    cv [label=<<TABLE BORDER="0" CELLPADDING="3"><TR><TD WIDTH="155"><B>Grouped CV tuning</B><BR/><FONT POINT-SIZE="7.0" COLOR="#333333">5-fold, groups = polygon<BR/>RandomizedSearchCV<BR/>60 draws per model</FONT></TD></TR></TABLE>>, fillcolor="#f6ecd8"];
+    clf [label=<<TABLE BORDER="0" CELLPADDING="3"><TR><TD WIDTH="250"><B>6 classifiers</B><BR/><FONT POINT-SIZE="7.0" COLOR="#333333">SVM (RBF), LightGBM, MLP (deep)<BR/>XGBoost, Random Forest, CART</FONT></TD></TR></TABLE>>, fillcolor="#f6ecd8"];
+    stage3 -> cv [style=invis];
+    cv -> clf [style=invis];
+  }
+  stage4 [label="", style=invis, width=0.95, height=0.16];
+  { rank=same; stage4;
+    predict [label=<<TABLE BORDER="0" CELLPADDING="3"><TR><TD WIDTH="250"><B>Classify every city pixel</B><BR/><FONT POINT-SIZE="7.0" COLOR="#333333">6 wall-to-wall maps at 10 m</FONT></TD></TR></TABLE>>, fillcolor="#f6ecd8"];
+    stage4 -> predict [style=invis];
+  }
+  stage5 [label="Assessment", shape=box, style="filled", fillcolor="#f7e3e8", color="#f7e3e8", fontsize=8.5, fontcolor="#333333", width=0.95, height=0.30];
+  { rank=same; stage5;
+    hold [label=<<TABLE BORDER="0" CELLPADDING="3"><TR><TD WIDTH="155"><B>Hold-out accuracy</B><BR/><FONT POINT-SIZE="7.0" COLOR="#333333">OA, kappa, per-class UA/PA<BR/>2000 bootstrap CIs</FONT></TD></TR></TABLE>>, fillcolor="#f7e3e8"];
+    mcn [label=<<TABLE BORDER="0" CELLPADDING="3"><TR><TD WIDTH="250"><B>Pairwise significance</B><BR/><FONT POINT-SIZE="7.0" COLOR="#333333">McNemar, naive and<BR/>polygon-cluster corrected</FONT></TD></TR></TABLE>>, fillcolor="#f7e3e8"];
+    stage5 -> hold [style=invis];
+    hold -> mcn [style=invis];
+  }
+  stage6 [label="", style=invis, width=0.95, height=0.16];
+  { rank=same; stage6;
+    diag [label=<<TABLE BORDER="0" CELLPADDING="3"><TR><TD WIDTH="155"><B>Diagnostics</B><BR/><FONT POINT-SIZE="7.0" COLOR="#333333">Jeffries-Matusita separability<BR/>error concentration, design effect</FONT></TD></TR></TABLE>>, fillcolor="#f7e3e8"];
+    olof [label=<<TABLE BORDER="0" CELLPADDING="3"><TR><TD WIDTH="250"><B>Area-weighted accuracy</B><BR/><FONT POINT-SIZE="7.0" COLOR="#333333">Olofsson et al. (2014)<BR/>strata weights from each model's own map</FONT></TD></TR></TABLE>>, fillcolor="#f7e3e8"];
+    stage6 -> diag [style=invis];
+    diag -> olof [style=invis];
+  }
+  stage7 [label="", style=invis, width=0.95, height=0.16];
+  { rank=same; stage7;
+    ref [label=<<TABLE BORDER="0" CELLPADDING="3"><TR><TD WIDTH="250"><B>Blind stratified reference sample</B><BR/><FONT POINT-SIZE="7.0" COLOR="#333333">605 points</FONT></TD></TR></TABLE>>, fillcolor="#f7e3e8"];
+    stage7 -> ref [style=invis];
+  }
+  stage8 [label="Output", shape=box, style="filled", fillcolor="#ececec", color="#ececec", fontsize=8.5, fontcolor="#333333", width=0.95, height=0.30];
+  { rank=same; stage8;
+    out [label=<<TABLE BORDER="0" CELLPADDING="3"><TR><TD WIDTH="250"><B>Outputs</B><BR/><FONT POINT-SIZE="7.0" COLOR="#333333">6 classified maps  |  per-model class areas  |  accuracy and area CIs</FONT></TD></TR></TABLE>>, fillcolor="#ececec"];
+    stage8 -> out [style=invis];
+  }
+  stage0 -> stage1 [style=invis, weight=200];
+  stage1 -> stage2 [style=invis, weight=200];
+  stage2 -> stage3 [style=invis, weight=200];
+  stage3 -> stage4 [style=invis, weight=200];
+  stage4 -> stage5 [style=invis, weight=200];
+  stage5 -> stage6 [style=invis, weight=200];
+  stage6 -> stage7 [style=invis, weight=200];
+  stage7 -> stage8 [style=invis, weight=200];
+  s2 -> comp;
+  roi -> parts;
+  bnd -> comp;
+  comp -> samp;
+  parts -> samp;
+  samp -> split;
+  split -> cv;
+  split -> clf;
+  cv -> clf [label=" best settings "];
+  clf -> predict;
+  predict -> hold;
+  predict -> mcn;
+  hold -> diag;
+  mcn -> olof;
+  diag -> ref;
+  olof -> ref;
+  ref -> out;
+  predict -> olof [label=" areas = weights ", style=dashed, color="#8c6d1f", fontcolor="#8c6d1f", constraint=false];
+}

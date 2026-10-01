@@ -1,0 +1,150 @@
+{
+  "raster": "/Users/ami_01/Taipei_LULC/Taipei_LULC/data/exports/taipei_lulc_SVM_RBF.tif",
+  "pixel_area_m2": 100.0,
+  "total_area_km2": 270.44050000000004,
+  "areas_km2": {
+    "1": 14.5324,
+    "2": 71.6777,
+    "3": 133.3422,
+    "4": 18.7393,
+    "5": 32.1489
+  },
+  "pixel_counts": {
+    "1": 145324,
+    "2": 716777,
+    "3": 1333422,
+    "4": 187393,
+    "5": 321489
+  },
+  "model": "SVM (RBF)",
+  "features": [
+    "B2",
+    "B3",
+    "B4",
+    "B8"
+  ],
+  "models": {
+    "SVM (RBF)": {
+      "raster": "/Users/ami_01/Taipei_LULC/Taipei_LULC/data/exports/taipei_lulc_SVM_RBF.tif",
+      "pixel_area_m2": 100.0,
+      "total_area_km2": 270.44050000000004,
+      "areas_km2": {
+        "1": 14.5324,
+        "2": 71.6777,
+        "3": 133.3422,
+        "4": 18.7393,
+        "5": 32.1489
+      },
+      "pixel_counts": {
+        "1": 145324,
+        "2": 716777,
+        "3": 1333422,
+        "4": 187393,
+        "5": 321489
+      }
+    },
+    "LightGBM": {
+      "raster": "/Users/ami_01/Taipei_LULC/Taipei_LULC/data/exports/taipei_lulc_LightGBM.tif",
+      "pixel_area_m2": 100.0,
+      "total_area_km2": 270.4405,
+      "areas_km2": {
+        "1": 8.9272,
+        "2": 95.8723,
+        "3": 132.6985,
+        "4": 22.0662,
+        "5": 10.8763
+      },
+      "pixel_counts": {
+        "1": 89272,
+        "2": 958723,
+        "3": 1326985,
+        "4": 220662,
+        "5": 108763
+      }
+    },
+    "MLP (deep)": {
+      "raster": "/Users/ami_01/Taipei_LULC/Taipei_LULC/data/exports/taipei_lulc_MLP_deep.tif",
+      "pixel_area_m2": 100.0,
+      "total_area_km2": 270.4405,
+      "areas_km2": {
+        "1": 9.9346,
+        "2": 83.6992,
+        "3": 131.4547,
+        "4": 25.3147,
+        "5": 20.0373
+      },
+      "pixel_counts": {
+        "1": 99346,
+        "2": 836992,
+        "3": 1314547,
+        "4": 253147,
+        "5": 200373
+      }
+    },
+    "XGBoost": {
+      "raster": "/Users/ami_01/Taipei_LULC/Taipei_LULC/data/exports/taipei_lulc_XGBoost.tif",
+      "pixel_area_m2": 100.0,
+      "total_area_km2": 270.4405,
+      "areas_km2": {
+        "1": 7.9791,
+        "2": 96.0316,
+        "3": 131.7499,
+        "4": 22.8682,
+        "5": 11.8117
+      },
+      "pixel_counts": {
+        "1": 79791,
+        "2": 960316,
+        "3": 1317499,
+        "4": 228682,
+        "5": 118117
+      }
+    },
+    "Random Forest": {
+      "raster": "/Users/ami_01/Taipei_LULC/Taipei_LULC/data/exports/taipei_lulc_Random_Forest.tif",
+      "pixel_area_m2": 100.0,
+      "total_area_km2": 270.4405,
+      "areas_km2": {
+        "1": 7.4155,
+        "2": 83.5515,
+        "3": 127.717,
+        "4": 19.592,
+        "5": 32.1645
+      },
+      "pixel_counts": {
+        "1": 74155,
+        "2": 835515,
+        "3": 1277170,
+        "4": 195920,
+        "5": 321645
+      }
+    },
+    "CART": {
+      "raster": "/Users/ami_01/Taipei_LULC/Taipei_LULC/data/exports/taipei_lulc_CART.tif",
+      "pixel_area_m2": 100.0,
+      "total_area_km2": 270.4405,
+      "areas_km2": {
+        "1": 7.661,
+        "2": 102.0612,
+        "3": 126.6409,
+        "4": 18.1614,
+        "5": 15.916
+      },
+      "pixel_counts": {
+        "1": 76610,
+        "2": 1020612,
+        "3": 1266409,
+        "4": 181614,
+        "5": 159160
+      }
+    }
+  },
+  "rasters": {
+    "SVM (RBF)": "/Users/ami_01/Taipei_LULC/Taipei_LULC/data/exports/taipei_lulc_SVM_RBF.tif",
+    "LightGBM": "/Users/ami_01/Taipei_LULC/Taipei_LULC/data/exports/taipei_lulc_LightGBM.tif",
+    "MLP (deep)": "/Users/ami_01/Taipei_LULC/Taipei_LULC/data/exports/taipei_lulc_MLP_deep.tif",
+    "XGBoost": "/Users/ami_01/Taipei_LULC/Taipei_LULC/data/exports/taipei_lulc_XGBoost.tif",
+    "Random Forest": "/Users/ami_01/Taipei_LULC/Taipei_LULC/data/exports/taipei_lulc_Random_Forest.tif",
+    "CART": "/Users/ami_01/Taipei_LULC/Taipei_LULC/data/exports/taipei_lulc_CART.tif"
+  }
+}

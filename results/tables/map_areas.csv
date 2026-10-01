@@ -1,0 +1,31 @@
+model,class_id,class,pixels,area_km2,percent
+SVM (RBF),1,Water,145324,14.5324,5.37
+SVM (RBF),2,Built-up,716777,71.6777,26.5
+SVM (RBF),3,Forest/Vegetation,1333422,133.3422,49.31
+SVM (RBF),4,Plantation,187393,18.7393,6.93
+SVM (RBF),5,Swamp,321489,32.1489,11.89
+LightGBM,1,Water,89272,8.9272,3.3
+LightGBM,2,Built-up,958723,95.8723,35.45
+LightGBM,3,Forest/Vegetation,1326985,132.6985,49.07
+LightGBM,4,Plantation,220662,22.0662,8.16
+LightGBM,5,Swamp,108763,10.8763,4.02
+MLP (deep),1,Water,99346,9.9346,3.67
+MLP (deep),2,Built-up,836992,83.6992,30.95
+MLP (deep),3,Forest/Vegetation,1314547,131.4547,48.61
+MLP (deep),4,Plantation,253147,25.3147,9.36
+MLP (deep),5,Swamp,200373,20.0373,7.41
+XGBoost,1,Water,79791,7.9791,2.95
+XGBoost,2,Built-up,960316,96.0316,35.51
+XGBoost,3,Forest/Vegetation,1317499,131.7499,48.72
+XGBoost,4,Plantation,228682,22.8682,8.46
+XGBoost,5,Swamp,118117,11.8117,4.37
+Random Forest,1,Water,74155,7.4155,2.74
+Random Forest,2,Built-up,835515,83.5515,30.89
+Random Forest,3,Forest/Vegetation,1277170,127.717,47.23
+Random Forest,4,Plantation,195920,19.592,7.24
+Random Forest,5,Swamp,321645,32.1645,11.89
+CART,1,Water,76610,7.661,2.83
+CART,2,Built-up,1020612,102.0612,37.74
+CART,3,Forest/Vegetation,1266409,126.6409,46.83
+CART,4,Plantation,181614,18.1614,6.72
+CART,5,Swamp,159160,15.916,5.89

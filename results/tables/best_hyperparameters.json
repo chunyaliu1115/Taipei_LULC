@@ -1,0 +1,45 @@
+{
+  "CART": {
+    "min_samples_split": 5,
+    "min_samples_leaf": 1,
+    "max_depth": 5,
+    "criterion": "gini",
+    "ccp_alpha": 0.0001
+  },
+  "SVM (RBF)": {
+    "clf__gamma": 0.0006158482110660267,
+    "clf__C": 20.6913808111479
+  },
+  "Random Forest": {
+    "n_estimators": 50,
+    "min_samples_leaf": 10,
+    "max_features": "sqrt",
+    "max_depth": 30,
+    "class_weight": "balanced_subsample"
+  },
+  "XGBoost": {
+    "subsample": 0.6,
+    "reg_lambda": 5.0,
+    "n_estimators": 200,
+    "min_child_weight": 1,
+    "max_depth": 9,
+    "learning_rate": 0.05,
+    "colsample_bytree": 1.0
+  },
+  "LightGBM": {
+    "subsample": 0.8,
+    "reg_lambda": 1.0,
+    "num_leaves": 15,
+    "n_estimators": 800,
+    "min_child_samples": 10,
+    "learning_rate": 0.05,
+    "colsample_bytree": 1.0
+  },
+  "MLP (deep)": {
+    "clf__learning_rate_init": 0.001,
+    "clf__hidden_layer_sizes": [
+      64
+    ],
+    "clf__alpha": 0.03593813663804626
+  }
+}

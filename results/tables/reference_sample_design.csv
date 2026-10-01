@@ -1,0 +1,6 @@
+class_id,class,map_area_km2,W_i,prior_UA,proportional_n,allocated_n
+1,Water,14.532,0.0537,0.82,27,75
+2,Built-up,71.678,0.265,0.889,133,133
+3,Forest/Vegetation,133.342,0.4931,0.9,247,247
+4,Plantation,18.739,0.0693,0.576,35,75
+5,Swamp,32.149,0.1189,0.83,59,75

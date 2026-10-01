@@ -1,0 +1,49 @@
+cff-version: 1.2.0
+title: >-
+  Taipei LULC: six-classifier comparison with cluster-aware
+  validation
+message: >-
+  If you use this software or data, please cite both the
+  repository and the associated paper.
+type: software
+authors:
+  - given-names: Chun-ya
+    family-names: Liu
+    orcid: 'https://orcid.org/0000-0001-7544-929X'
+repository-code: 'https://github.com/ami01/taipei-lulc'
+abstract: >-
+  Code, sampled reflectance data, classified maps and figures
+  for a comparison of six machine learning classifiers (CART,
+  Random Forest, XGBoost, LightGBM, RBF support vector machine
+  and a multilayer perceptron) for land use land cover mapping
+  of Taipei City from Sentinel-2. The validation sample is
+  drawn from hand-digitised polygons, so the split is applied
+  at polygon level and every interval and hypothesis test is
+  computed on the effective sample size implied by the Kish
+  design effect. Under that correction none of the fifteen
+  pairwise accuracy differences is significant.
+keywords:
+  - land use land cover
+  - Sentinel-2
+  - Google Earth Engine
+  - machine learning
+  - classification accuracy
+  - spatial autocorrelation
+  - effective sample size
+  - Taipei
+license: MIT
+license-url: 'https://github.com/ami01/taipei-lulc/blob/main/LICENSE'
+references:
+  - type: article
+    title: >-
+      How Much Does the Classifier Matter? A Cluster-Aware
+      Comparison of Six Machine Learning Algorithms for Land
+      Use Land Cover Mapping of Taipei, Taiwan, Using Google
+      Earth Engine and Python
+    authors:
+      - given-names: Chun-ya
+        family-names: Liu
+        orcid: 'https://orcid.org/0000-0001-7544-929X'
+    journal: ICCK Journal of Image Analysis and Processing
+    year: 2026
+    status: submitted
